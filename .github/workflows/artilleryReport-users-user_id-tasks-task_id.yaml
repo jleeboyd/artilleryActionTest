@@ -33,9 +33,10 @@ jobs:
     - name: go to home
       run: |
         cd /home/runner
+        cd /.npm/lib
+        cd /node_modules
         ls -a
-        cd .npm
-        ls -a
+        
 
     # @@Uncomment for after first@@
     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
