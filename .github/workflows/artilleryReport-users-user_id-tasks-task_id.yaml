@@ -31,7 +31,7 @@ jobs:
       run: npm install -g artillery
 
     - name: check for artillery
-      run: echo 'ls -al'
+      run: ls -al
 
     # @@Uncomment for after first@@
     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
