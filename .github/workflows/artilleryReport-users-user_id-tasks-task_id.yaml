@@ -30,6 +30,9 @@ jobs:
     - name: Run npm install artillery  
       run: npm install -g artillery
 
+    - name: check global
+      run: npm list -g
+
     - name: go to home
       run: |
         cd /home/runner/.npm
