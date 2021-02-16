@@ -37,10 +37,10 @@ jobs:
     #     popd
 
     - name: Sleep
-      run: sleep 15s
+      run: sleep 5s
 
     - name: Run Artillery Test
-      run: /usr/local/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id-api.yaml
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
