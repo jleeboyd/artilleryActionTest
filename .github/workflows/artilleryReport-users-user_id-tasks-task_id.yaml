@@ -33,7 +33,9 @@ jobs:
     - name: go to home
       run: cd /home/runner
     - name: check for npm
-      run: ls 
+      run: ls -a
+    - name: go to npm
+      run: cd .npm-global
 
     # @@Uncomment for after first@@
     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
