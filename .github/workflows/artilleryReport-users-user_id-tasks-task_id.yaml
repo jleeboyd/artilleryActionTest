@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest # tells GH actions what we'll be running everything on
     steps:
     - name: 'Checkout Repository GitHub Action' # checks out the repository
-      uses: actions/checkout@development
+      uses: actions/checkout@v2
 
     - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
       uses: actions/setup-node@v1 
