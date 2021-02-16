@@ -1,103 +1,108 @@
-# name: Artillery Action to test endpoint function users-userId-tasks-taskId
-
-# on:
-#   push:
-#     branches:
-#       - development # On merge with master, call this action
-
-# env:
-#   # AZURE_FUNCTIONAPP_NAME: 'nsc-fun-dev-usw2-thursday'
-#   # AZURE_FUNCTIONAPP_PACKAGE_PATH: 'functions'   # relative to the root, where are you keeping the functions
-#   NODE_VERSION: '14'  # the version of node we are using
-
-# jobs:
-#   setup:
-#     runs-on: ubuntu-latest # tells GH actions what we'll be running everything on
-#     steps:
-#     - name: 'Checkout Repository GitHub Action' # checks out the repository
-#       uses: actions/checkout@v2
-
-#     - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: ${{ env.NODE_VERSION }}
-#         check-latest: true
-
-#     # @@Uncomment for first install to project@@
-#     - name: 'Run npm init'
-#       run: npm init -y
-
-#     - name: Run npm install artillery  
-#       run: npm install -g artillery
-
-#     # - name: check global
-#     #   run: npm list -g
-
-#     # - name: go to home
-#     #   run: |
-#     #     cd /home/runner/.npm
-#     #     ls -a
-        
-
-#     # @@Uncomment for after first@@
-#     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
-#     #   shell: pwsh
-#     #   run: |
-#     #     pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-#     #     npm install
-#     #     popd
-
-#     - name: Sleep
-#       run: sleep 10s
-
-#     # Path set by github actions.
-#     - name: Run Artillery Test
-#       run: artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
-
-#     - name: Check Artillery Performance test file
-#       run: ls -ltr artilleryReport_test.json
-#     # - name: 'Run Azure Functions Action'
-#     #   uses: Azure/functions-action@v1
-#     #   id: fa
-#     #   with:
-#     #     app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-#     #     package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-#     #     publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-
-name: Performance-Test
+name: Artillery Action to test endpoint function users-userId-tasks-taskId
 
 on:
   push:
     branches:
-      - development
+      - development # On merge with master, call this action
+
+env:
+  # AZURE_FUNCTIONAPP_NAME: 'nsc-fun-dev-usw2-thursday'
+  # AZURE_FUNCTIONAPP_PACKAGE_PATH: 'functions'   # relative to the root, where are you keeping the functions
+  NODE_VERSION: '14'  # the version of node we are using
+  NPM_CONFIG_PREFIX: "~/.npm-global"
 
 jobs:
   setup:
-    name: Artillery Performance Test
-    runs-on: ubuntu-latest
-    env:
-      NPM_CONFIG_PREFIX: "~/.npm-global"
-      STAGE_NAME: merge-perf-test
-
+    runs-on: ubuntu-latest # tells GH actions what we'll be running everything on
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-          check-latest: true
+    - name: 'Checkout Repository GitHub Action' # checks out the repository
+      uses: actions/checkout@v2
 
-      - name: nodeJS and npm version
-        run: npm -v
-      - name: npm init
-        run: npm init -y
-      - name: Install artillery
-        run: npm install -g artillery
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
-      - name: Sleep
-        run: sleep 10s
-      - name: Running Artillery Test
-        run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+    - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        check-latest: true
+
+    # @@Uncomment for first install to project@@
+    - name: 'Run npm init'
+      run: npm init -y
+
+    - name: Run npm install artillery  
+      run: npm install -g artillery
+
+    # - name: check global
+    #   run: npm list -g
+
+    # - name: go to home
+    #   run: |
+    #     cd /home/runner/.npm
+    #     ls -a
+        
+
+    # @@Uncomment for after first@@
+    # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
+    #   shell: pwsh
+    #   run: |
+    #     pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+    #     npm install
+    #     popd
+
+    - name: Sleep
+      run: sleep 10s
+
+    # Path set by github actions.
+    - name: Run Artillery Test
+      run: artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+
+    - name: Check Artillery Performance test file
+      run: | 
+        ls -a
+        cat artilleryReport_test.json
+        :q
+
+    # - name: 'Run Azure Functions Action'
+    #   uses: Azure/functions-action@v1
+    #   id: fa
+    #   with:
+    #     app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+    #     package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+    #     publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+
+# name: Performance-Test
+
+# on:
+#   push:
+#     branches:
+#       - development
+
+# jobs:
+#   setup:
+#     name: Artillery Performance Test
+#     runs-on: ubuntu-latest
+#     env:
+#       NPM_CONFIG_PREFIX: "~/.npm-global"
+#       STAGE_NAME: merge-perf-test
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: "14"
+#           check-latest: true
+
+#       - name: nodeJS and npm version
+#         run: npm -v
+#       - name: npm init
+#         run: npm init -y
+#       - name: Install artillery
+#         run: npm install -g artillery
+#       - name: Get current date
+#         id: date
+#         run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
+#       - name: Sleep
+#         run: sleep 10s
+#       - name: Running Artillery Test
+#         run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
