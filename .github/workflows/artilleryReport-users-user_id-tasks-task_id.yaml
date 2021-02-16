@@ -8,7 +8,7 @@ on:
 env:
   # AZURE_FUNCTIONAPP_NAME: 'nsc-fun-dev-usw2-thursday'
   # AZURE_FUNCTIONAPP_PACKAGE_PATH: 'functions'   # relative to the root, where are you keeping the functions
-  NODE_VERSION: '14.x'  # the version of node we are using
+  NODE_VERSION: '14'  # the version of node we are using
 
 jobs:
   setup:
@@ -21,6 +21,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ env.NODE_VERSION }}
+        check-latest: true
 
     - name: checkout version
       run: npm -v
@@ -28,7 +29,7 @@ jobs:
     # @@Uncomment for first install to project@@
     - name: 'Run npm init'
       run: npm init -y
-      
+
     - name: Run npm install artillery  
       run: npm install -g artillery
 
