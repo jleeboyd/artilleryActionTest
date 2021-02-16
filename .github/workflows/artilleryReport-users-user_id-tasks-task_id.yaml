@@ -52,7 +52,7 @@ jobs:
 
     # Path set by github actions.
     - name: Run Artillery Test
-      run: npm artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+      run: artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
