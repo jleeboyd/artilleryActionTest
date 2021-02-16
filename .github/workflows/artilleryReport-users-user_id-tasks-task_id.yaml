@@ -31,11 +31,11 @@ jobs:
       run: npm install -g artillery
 
     - name: go to home
-      run: cd /home/runner
-    - name: check for npm
-      run: ls -a
-    - name: go to npm
-      run: cd .npm-global
+      run: |
+        cd /home/runner
+        ls -a
+        cd .npm-global
+        ls -a
 
     # @@Uncomment for after first@@
     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
