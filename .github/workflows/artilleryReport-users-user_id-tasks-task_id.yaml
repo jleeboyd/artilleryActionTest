@@ -23,9 +23,6 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
         check-latest: true
 
-    - name: checkout version
-      run: npm -v
-
     # @@Uncomment for first install to project@@
     - name: 'Run npm init'
       run: npm init -y
@@ -41,11 +38,11 @@ jobs:
     #     npm install
     #     popd
 
-    # - name: Sleep
-    #   run: sleep 5s
+    - name: Sleep
+      run: sleep 10s
 
-    # - name: Run Artillery Test
-    #   run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+    - name: Run Artillery Test
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
