@@ -1,0 +1,50 @@
+name: Artillery Action to test endpoint function users-userId-tasks-taskId
+
+on:
+  push:
+    branches:
+      - development # On merge with master, call this action
+
+env:
+  # AZURE_FUNCTIONAPP_NAME: 'nsc-fun-dev-usw2-thursday'
+  # AZURE_FUNCTIONAPP_PACKAGE_PATH: 'functions'   # relative to the root, where are you keeping the functions
+  NODE_VERSION: '14.x'  # the version of node we are using
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest # tells GH actions what we'll be running everything on
+    steps:
+    - name: 'Checkout Repository GitHub Action' # checks out the repository
+      uses: actions/checkout@development
+
+    - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
+      uses: actions/setup-node@v1 
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    # @@Uncomment for first install to project@@
+    - name: 'Initial install for first time'
+      run: npm init -y
+      run: npm install -g artillery
+
+    # @@Uncomment for after first@@
+    # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
+    #   shell: pwsh
+    #   run: |
+    #     pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+    #     npm install
+    #     popd
+
+    - name: Sleep
+      run: sleep 15s
+
+    - name: Run Artillery Test
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id-api.yaml
+
+    # - name: 'Run Azure Functions Action'
+    #   uses: Azure/functions-action@v1
+    #   id: fa
+    #   with:
+    #     app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+    #     package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+    #     publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
