@@ -30,13 +30,13 @@ jobs:
     - name: Run npm install artillery  
       run: npm install -g artillery
 
-    - name: check global
-      run: npm list -g
+    # - name: check global
+    #   run: npm list -g
 
-    - name: go to home
-      run: |
-        cd /home/runner/.npm
-        ls -a
+    # - name: go to home
+    #   run: |
+    #     cd /home/runner/.npm
+    #     ls -a
         
 
     # @@Uncomment for after first@@
@@ -47,11 +47,12 @@ jobs:
     #     npm install
     #     popd
 
-    # - name: Sleep
-    #   run: sleep 10s
+    - name: Sleep
+      run: sleep 10s
 
-    # - name: Run Artillery Test
-    #   run: /home/runner/.npm/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+    # Path set by github actions.
+    - name: Run Artillery Test
+      run: /opt/hostedtoolcache/node/14.15.5/x64/lib run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
