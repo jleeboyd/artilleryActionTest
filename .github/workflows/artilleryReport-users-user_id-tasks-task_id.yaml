@@ -30,6 +30,9 @@ jobs:
     - name: Run npm install artillery  
       run: npm install -g artillery
 
+    - name: check for artillery
+      run: echo 'ls -al'
+
     # @@Uncomment for after first@@
     # - name: 'Resolve Project Dependencies Using Npm' # installs all the packages necessary to run the functions
     #   shell: pwsh
@@ -38,11 +41,11 @@ jobs:
     #     npm install
     #     popd
 
-    - name: Sleep
-      run: sleep 10s
+    # - name: Sleep
+    #   run: sleep 10s
 
-    - name: Run Artillery Test
-      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+    # - name: Run Artillery Test
+    #   run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
