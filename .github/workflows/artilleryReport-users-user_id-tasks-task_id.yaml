@@ -53,7 +53,7 @@ jobs:
 
     # Path set by github actions.
     - name: Run Artillery Test
-      run: artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
     - name: Check Artillery Performance test file
       run: | 
