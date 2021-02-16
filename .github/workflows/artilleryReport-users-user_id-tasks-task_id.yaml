@@ -54,6 +54,8 @@ jobs:
     - name: Run Artillery Test
       run: artillery run --output artilleryReport_test.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
+    - name: Check Artillery Performance test file
+      run: ls -ltr artilleryReport_test.json
     # - name: 'Run Azure Functions Action'
     #   uses: Azure/functions-action@v1
     #   id: fa
