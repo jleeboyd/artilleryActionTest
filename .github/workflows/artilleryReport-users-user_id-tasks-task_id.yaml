@@ -77,7 +77,7 @@ jobs:
     - name: Upload result to s3
       uses: shallwefootball/s3-upload-action@master
       with:
-        aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_access_key:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_key_id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_secret_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_bucket: artillery
         source_dir: 'testing'
