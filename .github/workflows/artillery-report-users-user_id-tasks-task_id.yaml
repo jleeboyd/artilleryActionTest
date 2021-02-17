@@ -8,6 +8,7 @@ on:
 env:
   NODE_VERSION: '14'  # the version of node we are using
   NPM_CONFIG_PREFIX: "~/.npm-global" # Required to set path for artillery call
+  PYTHON_VERSION: '3.8' # the version of python we are using
 
 jobs:
   setup:
@@ -47,6 +48,14 @@ jobs:
     #   run: | 
     #     ls -a
     #     cat artilleryReport_test.json
+
+    - name: check python version
+      run: python -v
+
+    - name: Setup Python ${{ env.PYTHON_VERSION }} Environment # this is the script that sets up python
+      uses: actions/setup-python@v1 
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
 
     # Upload to S3 with shell script + py
     - name: Upload to S3
