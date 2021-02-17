@@ -66,6 +66,7 @@ jobs:
       run: bash ./scripts/artillery-shell-users-user_id-tasks-task_id.sh ${{secrets.AWS_BUCKET_NAME_ARTILLERY}} ${{ secrets.AWS_ACCESS_KEY_ID }} ${{ secrets.AWS_SECRET_ACCESS_KEY }} "artillery_${{ steps.date.outputs.date }}.json"
 
 
+# https://github.com/zdurham/s3-upload-github-action
   #  - name: Upload file to bucket alternative way
   #  uses: zdurham/s3-upload-github-action@master
   #  with:
