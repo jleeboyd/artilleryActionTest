@@ -53,7 +53,7 @@ jobs:
       with:
         args: --acl public-read
       env:
-        FILE: artillery/${{ steps.date.outputs.date }}.json
+        FILE: artillery_${{ steps.date.outputs.date }}.json
         AWS_REGION: 'us-west-2'
         S3_BUCKET: artillery # TODO: Change once s3 secret is created 
         # S3_KEY: ${{ secrets.S3_KEY }}
