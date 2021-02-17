@@ -8,6 +8,7 @@ on:
 env:
   NODE_VERSION: '14'  # the version of node we are using
   NPM_CONFIG_PREFIX: "~/.npm-global" # Required to set path for artillery call
+  STAGE_NAME: merge-perf-test
 
 jobs:
   setup:
