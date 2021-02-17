@@ -28,13 +28,16 @@ jobs:
       uses: actions/checkout@v2
 
     - name: ${{ secrets.FILENAME}}
-      run: ls
+      run: | 
+        mkdir ${{ secrets.FILENAME}}
+        ls
 
-    - name: ${{ env.FILENAME }}
-      run: |
-        mkdir testing123
-        cd testing123
-        touch test.txt
+    # - name: ${{ env.FILENAME }}
+    #   run: |
+    #     mkdir testing123
+    #     cd testing123
+    #     touch test.txt
+    #     ls
 
     # - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
     #   uses: actions/setup-node@v2
