@@ -4,6 +4,8 @@ config:
     - duration: 10
       arrivalRate: 4
       name: Warm up 1 request per second
+
+    # # Testing at higher load  
     # - duration: 1200
     #   arrivalRate: 2
     #   rampTo: 6
@@ -11,13 +13,7 @@ config:
     # - duration: 1800
     #   arrivalRate: 10
     #   name: Sustained load 10 Requests per second
-  # processor: "./artillery-functions.js"
-  # Variables in query strings not valid, not working in URL string either even though this bug report details a scenario where post
-  # request response parameters are captured and used in a subsequent request/scenario: https://github.com/artilleryio/artillery/issues/698
-  # Response times are also returned as NaN with this approach.
-  # variables:
-  #   names:
-  #     -["Sean", "Max", "Toddy", "Kieran", "Erica", "Johart"]
+
 scenarios:
   - name: "Test flow"
     flow:
