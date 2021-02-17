@@ -40,11 +40,11 @@ jobs:
 
     # Path set by github actions.
     - name: Run Artillery Test
-      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery/${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
+      run: /home/runner/.npm-global/lib/node_modules/artillery/bin/artillery run --output artillery_${{ steps.date.outputs.date }}.json ./test/artillery/artillery-users-user_id-tasks-task_id.yaml
 
-    # - name: Check Artillery Performance test file
-    #   run: | 
-    #     ls -a
+    - name: Check Artillery Performance test file
+      run: | 
+        ls -a
     #     cat artilleryReport_test.json
 
     # - name: Upload file to bucket # Upload to S3
