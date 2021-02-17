@@ -27,17 +27,16 @@ jobs:
     - name: 'Checkout Repository GitHub Action' # checks out the repository
       uses: actions/checkout@v2
 
-    - name: ${{ secrets.FILENAME}}
-      run: | 
-        mkdir ${{ secrets.FILENAME}}
-        ls
-
-    # - name: ${{ env.FILENAME }}
-    #   run: |
-    #     mkdir testing123
-    #     cd testing123
-    #     touch test.txt
+    # - name: ${{ secrets.FILENAME}}
+    #   run: | 
+    #     mkdir ${{ secrets.FILENAME}}
     #     ls
+
+    - name: make file
+      run: |
+        mkdir testing
+        cd testing
+        touch test.txt
 
     # - name: Setup Node ${{ env.NODE_VERSION }} Environment # this is the script that sets up node
     #   uses: actions/setup-node@v2
@@ -81,4 +80,4 @@ jobs:
         aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_bucket: artillery
-        source_dir: 'test'
+        source_dir: 'testing'
