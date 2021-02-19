@@ -12,7 +12,7 @@ config:
     #   name: Ramp up load 2-6 requests / second
     # - duration: 1800
     #   arrivalRate: 10
-    #   name: Sustained load 10 Requests per second
+    #   name: Sustained load 10 Requests per second.
 
 scenarios:
   - name: "Test flow"
