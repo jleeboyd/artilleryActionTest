@@ -3,7 +3,7 @@ name: Artillery Action to test endpoint function users-userId-tasks-taskId
 on:
   push:
     branches:
-      - development # On merge with master, call this action
+      - development # On merge with master, call this action.
 
 env:
   NODE_VERSION: '14'  # The version of node we are using
