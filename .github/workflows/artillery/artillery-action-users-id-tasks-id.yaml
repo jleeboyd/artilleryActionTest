@@ -1,4 +1,4 @@
-name: Artillery Action to test endpoint function users-userId-tasks-taskId
+name: artillery-action-users-id-tasks-id
 
 on:
   push:
